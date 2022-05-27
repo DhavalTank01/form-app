@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = ({ count }) => {
   return (
@@ -43,6 +43,20 @@ const Navbar = ({ count }) => {
                 </NavLink>
               </li>
             </ul>
+            <div className="d-flex gap-2">
+              <Link
+                className="btn btn-outline-primary"
+                to="/routing-app/signIn"
+              >
+                Sign In
+              </Link>
+              <Link
+                className="btn btn-outline-success"
+                to="/routing-app/signUp"
+              >
+                Sign Up
+              </Link>
+            </div>
           </div>
         </div>
       </nav>

@@ -7,6 +7,8 @@ import Navbar from "./Navbar";
 import ErrorPage from "../Components/ErrorPage";
 import Footer from "../Components/Footer";
 import MovieDetails from "./MovieDetails";
+import SignIn from "../Components/SignIn";
+import SignUp from "../Components/SignUp";
 
 const App = () => {
   return (
@@ -19,6 +21,8 @@ const App = () => {
           <Route path="*" element={<ErrorPage />} />
           <Route path="/routing-app/customers" element={<Customers />} />
           <Route path="/routing-app/rentals" element={<Rentels />} />
+          <Route path="/routing-app/signIn" element={<SignIn />} />
+          <Route path="/routing-app/signUp" element={<SignUp />} />
           <Route path="/routing-app/movies" element={<Home />}></Route>
           <Route path="/routing-app/movies/:id" element={<MovieDetails />} />
         </Routes>
