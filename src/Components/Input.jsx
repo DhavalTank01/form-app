@@ -1,3 +1,4 @@
+import { errors } from "joi-browser";
 import React from "react";
 
 const Input = ({
@@ -9,6 +10,7 @@ const Input = ({
   onChange,
   helpText,
   id,
+  error,
 }) => {
   return (
     <div className="mb-3">
@@ -25,6 +27,7 @@ const Input = ({
         name={name}
       />
       {helpText && <div className="form-text">{helpText}</div>}
+      {error && <div className="form-text text-danger">{error}</div>}
     </div>
   );
 };

@@ -10,9 +10,14 @@ import ListGroup from "../Components/ListGroup";
 import { getGenres } from "../services/fakeGenreService";
 import MoviesTabel from "./MoviesTabel";
 import "../css/style.scss";
+import { Link } from "react-router-dom";
+import Input from "../Components/Input";
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
+  const [query, setQuery] = useState({
+    searchQuery: "",
+  });
   const [genres, setGenres] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentGenres, setCurrentGenres] = useState("All");
@@ -45,6 +50,9 @@ const Home = () => {
     setMovies(getMovies());
     setGenres(getGenres());
     setPageSize(5);
+  }, []);
+  useEffect(() => {
+    document.title = "Home";
   }, []);
 
   const handelDelete = useCallback(
@@ -92,10 +100,18 @@ const Home = () => {
     setCurrentPage(page);
   }, []);
 
-  const filtered =
-    "All" === currentGenres
-      ? movies
-      : movies.filter((cele) => cele.genre.name === currentGenres);
+  const allMovies = movies;
+  let filtered = {};
+  if (query.searchQuery !== "") {
+    filtered = allMovies.filter((m) => {
+      return m.title.toLowerCase().includes(query.searchQuery.toLowerCase());
+    });
+  } else {
+    filtered =
+      "All" === currentGenres
+        ? movies
+        : movies.filter((cele) => cele.genre.name === currentGenres);
+  }
 
   const sorted = _.orderBy(filtered, [columns.path], [columns.order]);
 
@@ -111,6 +127,14 @@ const Home = () => {
 
   const handelSort = useCallback((path, order) => {
     setColumns({ path, order });
+  }, []);
+
+  const handelQuery = useCallback((e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    const data = query;
+    data[name] = value;
+    setQuery({ ...data });
   }, []);
 
   return (
@@ -130,6 +154,14 @@ const Home = () => {
             title={`showing ${moviesList.length} movies out of ${filtered.length}`}
           />
           <DropDown onChange={handelShowRows} pageSize={pageSize} />
+          <Input
+            type={"text"}
+            placeholder={"Search...."}
+            name="searchQuery"
+            id="searchQuery"
+            value={query.searchQuery}
+            onChange={handelQuery}
+          />
           <div className="row table-box">
             <div className="col mt-3 box-1">
               <ListGroup
@@ -144,14 +176,22 @@ const Home = () => {
                   there are no movies of {currentGenres} genres
                 </p>
               ) : (
-                <MoviesTabel
-                  columns={columns}
-                  OnLike={handelLike}
-                  OnDelete={handelDelete}
-                  moviesList={moviesList}
-                  titles={titles}
-                  onSort={handelSort}
-                />
+                <>
+                  <Link
+                    className="btn btn-primary mt-3"
+                    to="/form-app/movies/new"
+                  >
+                    New Movie
+                  </Link>
+                  <MoviesTabel
+                    columns={columns}
+                    OnLike={handelLike}
+                    OnDelete={handelDelete}
+                    moviesList={moviesList}
+                    titles={titles}
+                    onSort={handelSort}
+                  />
+                </>
               )}
 
               <Pagenation

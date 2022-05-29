@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const Rantels = () => {
   const rantels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
+  useEffect(() => {
+    document.title = "Rentels";
+  }, []);
   return (
     <div className="container ">
       <div className="h3">All Rantels</div>

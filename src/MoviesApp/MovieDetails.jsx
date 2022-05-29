@@ -6,9 +6,13 @@ const MovieDetails = () => {
   const { id } = useParams();
   const movie = getMovie(id);
   const navigate = useNavigate();
+
+  if (!movie) {
+    navigate("/form-app/not-found");
+  }
   const handelSave = useCallback(() => {
     navigate(-1);
-  }, [navigate]);
+  }, []);
   return (
     <div className="container">
       <div className="h5 text-capitalize ">movie details</div>

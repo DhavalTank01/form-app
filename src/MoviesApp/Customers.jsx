@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const Customers = () => {
   const customers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  useEffect(() => {
+    document.title = "Customers";
+  }, []);
   return (
     <div className="container ">
       <div className="h3">All customers</div>

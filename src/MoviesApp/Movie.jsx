@@ -9,7 +9,7 @@ const Movie = ({ item, OnLike, id, OnDelete }) => {
       <td>
         <Link
           className="text-dark text-decoration-none movie-title"
-          to={`/routing-app/movies/${_id}`}
+          to={`/form-app/movies/${_id}`}
         >
           {title}
         </Link>

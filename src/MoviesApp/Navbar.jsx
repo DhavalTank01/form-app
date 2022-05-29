@@ -6,7 +6,7 @@ const Navbar = ({ count }) => {
     <div className="">
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
-          <NavLink className="navbar-brand" to="/routing-app">
+          <NavLink className="navbar-brand" to="/form-app">
             Movies App
           </NavLink>
           <button
@@ -23,22 +23,22 @@ const Navbar = ({ count }) => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink className="nav-link " to="/routing-app">
+                <NavLink className="nav-link " to="/form-app">
                   Home
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link " to="/routing-app/movies">
+                <NavLink className="nav-link " to="/form-app/movies">
                   movies
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/routing-app/customers">
+                <NavLink className="nav-link" to="/form-app/customers">
                   customers
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/routing-app/rentals">
+                <NavLink className="nav-link" to="/form-app/rentals">
                   rentals
                 </NavLink>
               </li>
@@ -46,13 +46,13 @@ const Navbar = ({ count }) => {
             <div className="d-flex gap-2">
               <Link
                 className="btn btn-outline-primary"
-                to="/routing-app/signIn"
+                to="/form-app/signIn"
               >
                 Sign In
               </Link>
               <Link
                 className="btn btn-outline-success"
-                to="/routing-app/signUp"
+                to="/form-app/signUp"
               >
                 Sign Up
               </Link>
